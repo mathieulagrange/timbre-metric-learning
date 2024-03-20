@@ -4,7 +4,7 @@
 
 *Nantes Université, École Centrale Nantes, CNRS, LS2N, Nantes, France*
 
-This self-contained toolbox accompanies the preprint: [hal-](http://)
+This self-contained toolbox accompanies the preprint: [hal-04501973](https://hal.science/hal-04501973v1/document)
 
 1. The demonstration notebook [`learn-metric`]() reproduces the explained variances reported in Table 1.
 2. The robustness of the learning procedure can be tested using the [`robustness`]() notebook.
@@ -40,7 +40,7 @@ Seventeen audio datasets are considered from eight historical studies focusing o
 - Siedenburg2016_e2set3
 - Siedenburg2016_e3.
 
-Audio samples [sounds](https://github.com/EtienneTho/musical-timbre-studies/tree/master/ext/python/sounds) and human dissimilarity ratings [data](https://github.com/EtienneTho/musical-timbre-studies/tree/master/ext/python/sounds) are downloaded from [github.com/EtienneTho/musical-timbre-studies](https://github.com/EtienneTho/musical-timbre-studies/) and placed untouched in [timbre-metric-learning/data]() for user convenience.
+Audio samples [sounds](https://github.com/EtienneTho/musical-timbre-studies/tree/master/ext/python/sounds) and human dissimilarity ratings [data](https://github.com/EtienneTho/musical-timbre-studies/tree/master/ext/python/sounds) are downloaded from [github.com/EtienneTho/musical-timbre-studies](https://github.com/EtienneTho/musical-timbre-studies/) and placed untouched in [timbre-metric-learning/data](https://github.com/bpascal-fr/timbre-metric-learning/tree/main/data) for user convenience.
 
 ## Models of human audio timbre perception
 
