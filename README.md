@@ -6,8 +6,8 @@
 
 This self-contained toolbox accompanies the preprint: [hal-04501973](https://hal.science/hal-04501973v1/document)
 
-1. The demonstration notebook [`learn-metric`]() reproduces the explained variances reported in Table 1.
-2. The robustness of the learning procedure can be tested using the [`robustness`]() notebook.
+1. The demonstration notebook [`learn-metric`](https://github.com/bpascal-fr/timbre-metric-learning/blob/main/learn-metric.ipynb) reproduces the explained variances reported in Table 1.
+2. The robustness of the learning procedure can be tested using the [`robustness`](https://github.com/bpascal-fr/timbre-metric-learning/blob/main/robustness.ipynb) notebook.
 
 Timbre, encompassing an intricate set of acoustic cues, is key to identify sound sources,  and especially to discriminate musical instruments and playing styles.
 Psychoacoustic studies focusing on timbre deploy massive efforts to explain human timbre perception.
