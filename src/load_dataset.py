@@ -1,7 +1,7 @@
 import pickle            as pkl
 import numpy             as np
 
-def load_data(the_dataset,the_representation):
+def load_data(the_dataset,the_representation,the_path=''):
     
     """
     Load human dissimilarity ratings and the audio sample representations.
@@ -47,7 +47,7 @@ def load_data(the_dataset,the_representation):
         d: human dissimilarity ratings stored in a l x (l-1)/2 vector
     """
     
-    with open('data/'+the_representation+'/'+the_dataset+'.pkl','rb') as Sp:
+    with open(the_path+'data/'+the_representation+'/'+the_dataset+'.pkl','rb') as Sp:
     
         data = pkl.load(Sp)
         
