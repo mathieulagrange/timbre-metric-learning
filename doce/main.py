@@ -55,7 +55,7 @@ def step(setting, experiment):
         opt     = bfgs_log_kernel_w1(r,d)
         weight = opt.x
 
-    pearson = -logpearson(weight,r,d)
+    pearson = (-logpearson(weight,r,d))**2
 
     np.save(experiment.path.output+setting.identifier()+experiment.metric_delimiter+'weight.npy', weight)
     np.save(experiment.path.output+setting.identifier()+experiment.metric_delimiter+'pearson.npy', pearson)
