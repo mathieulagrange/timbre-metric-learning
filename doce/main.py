@@ -35,8 +35,11 @@ experiment.set_path('output', '../../../drive/experiments/data/'+experiment.name
 experiment.add_plan('plan',
   dataset = ['Grey1977', 'Grey1978', 'Iverson1993_Whole', 'Iverson1993_Onset', 'Iverson1993_Remainder', 'McAdams1995', 'Lakatos2000_Harm', 'Lakatos2000_Perc', 'Lakatos2000_Comb', 'Barthet2010', 'Patil2012_A3', 'Patil2012_DX4', 'Patil2012_GD4', 'Siedenburg2016_e2set1', 'Siedenburg2016_e2set2', 'Siedenburg2016_e2set3', 'Siedenburg2016_e3'],
   embedding  = ['strf', 'stft', 'spectrum', 'scattering', 'clap', 'encodec', 'mert', 'mertcat'],
-  method = ['direct', 'learn', 'average']
+  method = ['direct', 'learn', 'average'],
+  warm = [0, 1]
 )
+
+experiment._plan.default('warm', 1)
 
 experiment.set_metric(
   name = 'pearson',
@@ -52,7 +55,10 @@ def step(setting, experiment):
     
     weight = np.ones(r.shape[0])
     if setting.method == 'learn':
-        opt     = bfgs_log_kernel_w1(r,d)
+        if setting.warm:
+            opt     = bfgs_log_kernel_w1(r,d)
+        else:
+            opt     = bfgs_log_kernel(r,d)
         weight = opt.x
 
     pearson = (-logpearson(weight,r,d))**2
