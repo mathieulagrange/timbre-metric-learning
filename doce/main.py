@@ -35,7 +35,15 @@ experiment.set_path('output', '../../../drive/experiments/data/'+experiment.name
 experiment.add_plan('plan',
   dataset = ['Grey1977', 'Grey1978', 'Iverson1993_Whole', 'Iverson1993_Onset', 'Iverson1993_Remainder', 'McAdams1995', 'Lakatos2000_Harm', 'Lakatos2000_Perc', 'Lakatos2000_Comb', 'Barthet2010', 'Patil2012_A3', 'Patil2012_DX4', 'Patil2012_GD4', 'Siedenburg2016_e2set1', 'Siedenburg2016_e2set2', 'Siedenburg2016_e2set3', 'Siedenburg2016_e3'],
   embedding  = ['strf', 'stft', 'spectrum', 'scattering', 'clap', 'encodec', 'mert', 'mertcat'],
-  method = ['direct', 'learn', 'average'],
+  method = ['direct', 'learn'],
+  warm = [0, 1]
+)
+
+experiment.add_plan('mert',
+  dataset = ['Grey1977', 'Grey1978', 'Iverson1993_Whole', 'Iverson1993_Onset', 'Iverson1993_Remainder', 'McAdams1995', 'Lakatos2000_Harm', 'Lakatos2000_Perc', 'Lakatos2000_Comb', 'Barthet2010', 'Patil2012_A3', 'Patil2012_DX4', 'Patil2012_GD4', 'Siedenburg2016_e2set1', 'Siedenburg2016_e2set2', 'Siedenburg2016_e2set3', 'Siedenburg2016_e3'],
+  embedding  = ['mertcut'],
+  index = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  method = ['direct', 'learn'],
   warm = [0, 1]
 )
 
@@ -51,8 +59,16 @@ experiment.set_metric(
 
 def step(setting, experiment):
  
-    r,D,d   = load_data(setting.dataset,setting.embedding, '../')
+    if setting.embedding == 'mertcut':
+        emb = 'mertcat'
+    else:
+        emb = setting.embedding
+ 
+    r,D,d   = load_data(setting.dataset,emb, '../')
     
+    if setting.embedding == 'mertcut':
+        r = r[setting.index*768:(setting.index+1)*768]
+
     weight = np.ones(r.shape[0])
     if setting.method == 'learn':
         if setting.warm:
